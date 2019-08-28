@@ -1,15 +1,8 @@
-/**
- * 
- */
+
 package model;
 import java.io.*;
 import java.util.ArrayList;
 
-
-/**
- * @author Alejandro Suarez
- *
- */
 public class Partner implements Serializable {
 
 	//Attributes
@@ -34,5 +27,65 @@ public class Partner implements Serializable {
 		  this.favoritePet = favoritePet;
 		  pets = new ArrayList<Pet>();
 	  }
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
+	public String getFavoritePet() {
+		return favoritePet;
+	}
+
+	public void setFavoritePet(String favoritePet) {
+		this.favoritePet = favoritePet;
+	}
+
+	public ArrayList<Pet> getPets() {
+		return pets;
+	}
+
+	public void setPets(ArrayList<Pet> pets) {
+		this.pets = pets;
+	}
 	
-}
+	//addPet
+	
+	public void addPet(Pet nP) {
+		
+	}
+	
+	//deletePet
+	
+	public void deletePet(String petToDelete) {
+		
+	}
+	
+}//final
