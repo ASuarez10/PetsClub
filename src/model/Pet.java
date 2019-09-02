@@ -39,13 +39,6 @@ public class Pet implements Serializable{
 	 */
 	private String type;
 	
-	//Relations
-	
-	/**
-	 * Is the relation from Pet to Partner
-	 */
-	
-	private Partner part;
 	  
 	//Constructor
 
@@ -55,8 +48,8 @@ public class Pet implements Serializable{
 	 * @param id - Pet's identification
 	 * @param name - Pet's name
 	 * @param date - Pet's birth date
-	 * @param date - Pet's gender
-	 * @param date - Pet's type
+	 * @param gender - Pet's gender
+	 * @param type - Pet's type
 	 */
 	public Pet(String id, String name, String date, int gender, String type) {
 		  this.id = id;
@@ -145,21 +138,4 @@ public class Pet implements Serializable{
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-	/**
-	 * Method to give the relation part
-	 * @return part
-	 */
-	 public Partner getPart() {
-		return part;
-	}
-
-	 /**
-		 * Method to modify the relation part
-		 * @param part - new part
-		 */
-	public void setPart(Partner part) {
-		this.part = part;
-	}
-	
 }//final

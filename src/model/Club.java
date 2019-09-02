@@ -6,17 +6,39 @@ public class Club {
 
 	//Attributes
 	
+	/**
+	 * Club's identification
+	 */
 	private String id;	
+	/**
+	 * Club's name
+	 */
 	private String name;
+	/**
+	 * Club's creation date
+	 */
 	private String creationDate;
+	/**
+	 * Club's pets type
+	 */
 	private String petsType;
 	
 	//Relations
 	
+	/**
+	 * ArrayList of partners
+	 */
 	  private ArrayList<Partner>partners;
 	  
 	//Constructor
 	  
+	  /**
+		 * Constructor of Club's class
+		 * @param id - Club's identification
+		 * @param name - Club's name
+		 * @param creationDate - Club's creation date
+		 * @param date - Club's pets type
+		 */
 	  public Club(String id, String name, String creationDate, String petsType) {
 		  this.id = id;
 		  this.name = name;
@@ -25,6 +47,10 @@ public class Club {
 		  partners = new ArrayList<Partner>();
 	  }
 
+	  /**
+		 * Method to give the attribute id
+		 * @return id
+		 */
 	public String getId() {
 		return id;
 	}
@@ -33,6 +59,10 @@ public class Club {
 		this.id = id;
 	}
 
+	/**
+	 * Method to give the attribute name
+	 * @return name
+	 */
 	public String getName() {
 		return name;
 	}
@@ -41,6 +71,10 @@ public class Club {
 		this.name = name;
 	}
 
+	/**
+	 * Method to give the attribute creationDate
+	 * @return creationDate
+	 */
 	public String getCreationDate() {
 		return creationDate;
 	}
@@ -49,6 +83,10 @@ public class Club {
 		this.creationDate = creationDate;
 	}
 
+	/**
+	 * Method to give the attribute petsType
+	 * @return petsType
+	 */
 	public String getPetsType() {
 		return petsType;
 	}
@@ -57,6 +95,10 @@ public class Club {
 		this.petsType = petsType;
 	}
 
+	/**
+	 * Method to give the ArrayList partners
+	 * @return partners
+	 */
 	public ArrayList<Partner> getPartners() {
 		return partners;
 	}
@@ -67,12 +109,20 @@ public class Club {
 	
 	//addPartner
 	
+	/**
+	 * Method to add a partner
+	 * @param nPartner - Partner to add
+	 */
 	public void addPartner(Partner nPartner) {
 		
 	}
 	
 	//deletePartner
 	
+	/**
+	 * Method to delete a partner
+	 * @param partToDelete - Partner's ID or name to delete
+	 */
 	public void deletePartner(String partToDelete) {
 		
 	}
@@ -88,6 +138,7 @@ public class Club {
 	public Partner findPartner(String fact) {
 		
 		Partner p = null;
+		
 		
 		return p;
 	}

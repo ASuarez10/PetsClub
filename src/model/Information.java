@@ -29,7 +29,7 @@ public class Information {
 	
 	//deleteClub
 	
-	public void deleteClub(String cbToDelete) {
+	public void deleteClub(String clubToDelete) {
 		
 	}
 	
