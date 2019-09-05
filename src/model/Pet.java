@@ -138,4 +138,11 @@ public class Pet implements Serializable{
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	@Override
+	public String toString() {
+		return "Pet [id=" + id + ", name=" + name + ", date=" + date + ", gender=" + gender + ", type=" + type + "]";
+	}
+	
+	
 }//final

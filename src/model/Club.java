@@ -115,6 +115,17 @@ public class Club {
 	 */
 	public void addPartner(Partner nPartner) {
 		
+		boolean esta = false;
+		
+		for(int i = 0; i < partners.size() && !esta; i++) {
+			if(nPartner.getId().equals(partners.get(i).getId())) {
+				esta = true;
+			}
+		}
+		
+		if(esta == true) {
+			partners.add(nPartner);
+		}
 	}
 	
 	//deletePartner
@@ -124,6 +135,18 @@ public class Club {
 	 * @param partToDelete - Partner's ID or name to delete
 	 */
 	public void deletePartner(String partToDelete) {
+		
+		boolean esta = false;
+		
+		for(int i = 0; i < partners.size() && !esta; i++) {
+			if(partToDelete.equals(partners.get(i).getId())) {
+				esta = true;
+				partners.remove(i);
+			}else if(partToDelete.equals(partners.get(i).getName())) {
+				esta = true;
+				partners.remove(i);
+			}
+		}
 		
 	}
 	

@@ -187,22 +187,29 @@ public class Partner implements Serializable {
 		}
 	}
 	
+	
+	//numberOfPets
+	
+	/**
+	 * Method to give the number of pets
+	 * @return number of pets
+	 */
+	public int numberOfPets() {
+		return pets.size();
+	}
+
 	//toString
 	
+	
+	/**
+	 * Method to have the partner's information
+	 * @return partner's info
+	 */
+	
+	@Override
 	public String toString() {
-		String msj = "";
-		
-		msj+= "\n"+"\n" + id;
-		msj+= "\n" + name;
-		msj+= "\n" + lastName;
-		msj+= "\n" + date;
-		msj+= "\n" + favoritePet;
-		msj+= "\n" + "Mascotas:";
-		for(int i = 0; i < pets.size(); i++){
-			msj+= "\n" + "-"+pets.get(i).getName();
-		}
-		
-		return msj;
+		return "Partner [id=" + id + ", name=" + name + ", lastName=" + lastName + ", date=" + date + ", favoritePet="
+				+ favoritePet + ", pets=" + pets + "]";
 	}
 	
 }//final
