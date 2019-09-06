@@ -55,6 +55,10 @@ public class Club {
 		return id;
 	}
 
+	/**
+	 * Method to modify the attribute id
+	 * @param id - new identification
+	 */
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -67,6 +71,10 @@ public class Club {
 		return name;
 	}
 
+	/**
+	 * Method to modify the attribute name
+	 * @param name - new name
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -79,6 +87,10 @@ public class Club {
 		return creationDate;
 	}
 
+	/**
+	 * Method to modify the attribute creationDate
+	 * @param creationDate - new creation date
+	 */
 	public void setCreationDate(String creationDate) {
 		this.creationDate = creationDate;
 	}
@@ -91,6 +103,10 @@ public class Club {
 		return petsType;
 	}
 
+	/**
+	 * Method to modify the attribute petsType
+	 * @param petsType - new pets type
+	 */
 	public void setPetsType(String petsType) {
 		this.petsType = petsType;
 	}
@@ -103,6 +119,10 @@ public class Club {
 		return partners;
 	}
 
+	/**
+	 * Method to modify the partners list
+	 * @param partners - new partners list
+	 */
 	public void setPartners(ArrayList<Partner> partners) {
 		this.partners = partners;
 	}
@@ -152,19 +172,44 @@ public class Club {
 	
 	//addPet
 	
-	public void addPet(Partner nwP, Pet nwPe) {
+	/**
+	 * Method to add a pet
+	 * @param idD - owner's id
+	 * @param nwPe - Pet to add
+	 */
+	public void addPet(String idD, Pet nwPe) {
+		
+		boolean esta = false;
+		
+		for(int i = 0; i < partners.size() && !esta; i++) {
+			if(idD.equals(partners.get(i).getId())) {
+				esta = true;			
+				partners.get(i).addPet(nwPe);
+			}
+		}
 		
 	}
 	
-	//findPartner
-	
-	public Partner findPartner(String fact) {
+	/**
+	 * Method to delete a pet
+	 * @param idP - owner's id
+	 * @param petToDelete - Pet's id or name to delete
+	 */
+	public void deletePet(String idP, String petToDelete) {
 		
-		Partner p = null;
+		boolean esta = false;
 		
-		
-		return p;
+		for(int i = 0; i < partners.size() && !esta; i++) {
+			if(idP.equals(partners.get(i).getId())) {
+				esta = true;
+				partners.get(i).deletePet(petToDelete);
+			}else if(idP.equals(partners.get(i).getName())) {
+				esta = true;
+				partners.get(i).deletePet(petToDelete);
+			}
+		}	
 	}
+	
 	
 	//partnersList
 	

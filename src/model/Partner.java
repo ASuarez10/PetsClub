@@ -2,6 +2,8 @@
 package model;
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 public class Partner implements Serializable {
 
@@ -20,9 +22,9 @@ public class Partner implements Serializable {
 	 */
 	private String lastName;
 	/**
-	 * Partner's date
+	 * Partner's birth date
 	 */
-	private String date;
+	private int day, month, year;
 	/**
 	 * Partner's favorite pet
 	 */
@@ -35,6 +37,8 @@ public class Partner implements Serializable {
 	 */
 	  private ArrayList<Pet>pets;
 	  
+	  Calendar fNacimiento = new GregorianCalendar(year, month, day);
+	  
 	//Constructor
 	  
 	  /**
@@ -42,14 +46,14 @@ public class Partner implements Serializable {
 		 * @param id - Partner's identification
 		 * @param name - Partner's name
 		 * @param lastname - Partner's last name
-		 * @param date - Partner's date
+		 * @param fNacimiento - Partner's date
 		 * @param favoritePet - Partner's favorite pet
 		 */
-	  public Partner(String id, String name, String lastName, String date, String favoritePet) {
+	  public Partner(String id, String name, String lastName, Calendar fNacimiento, String favoritePet) {
 		  this.id = id;
 		  this.name = name;
 		  this.lastName = lastName;
-		  this.date = date;
+		  this.fNacimiento = fNacimiento;
 		  this.favoritePet = favoritePet;
 		  pets = new ArrayList<Pet>();
 	  }
@@ -101,22 +105,8 @@ public class Partner implements Serializable {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-	/**
-	 * Method to give the attribute date
-	 * @return date
-	 */
-	public String getDate() {
-		return date;
-	}
-
-	/**
-	 * Method to modify the attribute date
-	 * @param date - new date
-	 */
-	public void setDate(String date) {
-		this.date = date;
-	}
+	
+	
 
 	/**
 	 * Method to give the attribute favoritePet
@@ -148,6 +138,70 @@ public class Partner implements Serializable {
 	 */
 	public void setPets(ArrayList<Pet> pets) {
 		this.pets = pets;
+	}
+	
+	/**
+	 * Method to give the attribute fNacimiento
+	 * @return birth date
+	 */
+	public Calendar getfNacimiento() {
+		return fNacimiento;
+	}
+
+	/**
+	 * Method to modify the attribute fNacimiento
+	 * @param fNacimiento - new birth date
+	 */
+	public void setfNacimiento(Calendar fNacimiento) {
+		this.fNacimiento = fNacimiento;
+	}
+	
+	/**
+	 * Method to give the attribute day
+	 * @return day
+	 */
+	public int getDay() {
+		return day;
+	}
+	
+	/**
+	 * Method to modify the attribute day
+	 * @param day - new day
+	 */
+	public void setDay(int day) {
+		this.day = day;
+	}
+
+	/**
+	 * Method to give the attribute month
+	 * @return month
+	 */
+	public int getMonth() {
+		return month;
+	}
+
+	/**
+	 * Method to modify the attribute month
+	 * @param month - new month
+	 */
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	/**
+	 * Method to give the attribute year
+	 * @return year
+	 */
+	public int getYear() {
+		return year;
+	}
+
+	/**
+	 * Method to modify the attribute year
+	 * @param year - new year
+	 */
+	public void setYear(int year) {
+		this.year = year;
 	}
 	
 	//addPet
@@ -197,8 +251,28 @@ public class Partner implements Serializable {
 	public int numberOfPets() {
 		return pets.size();
 	}
+	
+	/**
+	 * Method to calculate the partner's age
+	 * @return years
+	 */
+	public int calculateAge() {
+        Calendar cDate = Calendar.getInstance();
 
-	//toString
+
+        int years = cDate.get(Calendar.YEAR) - fNacimiento.get(Calendar.YEAR);
+
+        int months = cDate.get(Calendar.MONTH) - fNacimiento.get(Calendar.MONTH);
+
+        int days = cDate.get(Calendar.DAY_OF_MONTH) - fNacimiento.get(Calendar.DAY_OF_MONTH);
+
+        if(months < 0 || (months==0 && days < 0)) { 
+
+            years--;
+
+        }
+        return years;
+    }
 	
 	
 	/**
@@ -208,7 +282,7 @@ public class Partner implements Serializable {
 	
 	@Override
 	public String toString() {
-		String msj= "Partner [id=" + id + ", name=" + name + ", lastName=" + lastName + ", date=" + date + ", favoritePet="
+		String msj= "Partner [id=" + id + ", name=" + name + ", last name=" + lastName + ", age=" + calculateAge() + ", favorite pet="
 				+ favoritePet + ", pets= ";
 		
 		for(int i = 0; i < pets.size(); i++) {
