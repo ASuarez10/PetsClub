@@ -208,8 +208,16 @@ public class Partner implements Serializable {
 	
 	@Override
 	public String toString() {
-		return "Partner [id=" + id + ", name=" + name + ", lastName=" + lastName + ", date=" + date + ", favoritePet="
-				+ favoritePet + ", pets=" + pets + "]";
+		String msj= "Partner [id=" + id + ", name=" + name + ", lastName=" + lastName + ", date=" + date + ", favoritePet="
+				+ favoritePet + ", pets= ";
+		
+		for(int i = 0; i < pets.size(); i++) {
+			msj += pets.get(i) + ", ";
+		}
+		
+		msj += "]";
+		
+		return msj;
 	}
 	
 }//final
