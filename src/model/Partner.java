@@ -233,9 +233,7 @@ public class Partner implements Serializable {
 	public void deletePet(String petToDelete) {
 		
 		for(int i = 0; i < pets.size(); i++) {
-			if(petToDelete.equals(pets.get(i).getId())) {
-				pets.remove(i);
-			}else if(petToDelete.equals(pets.get(i).getName())) {
+			if(petToDelete.equals(pets.get(i).getName())) {
 				pets.remove(i);
 			}
 		}

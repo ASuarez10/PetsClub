@@ -162,9 +162,6 @@ public class Club {
 			if(partToDelete.equals(partners.get(i).getId())) {
 				esta = true;
 				partners.remove(i);
-			}else if(partToDelete.equals(partners.get(i).getName())) {
-				esta = true;
-				partners.remove(i);
 			}
 		}
 		

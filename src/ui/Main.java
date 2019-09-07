@@ -173,7 +173,7 @@ public class Main {
             	  System.out.println("Se ha agregado la mascota");
             	 break;
               case 4:
-            	  System.out.println("Ingresa el ID o el nombre del club que quieres borrar");
+            	  System.out.println("Ingresa el ID del club que quieres borrar");
             	  String cTD = reader.nextLine();
             	  
             	  information.deleteClub(cTD);
@@ -181,10 +181,29 @@ public class Main {
             	  System.out.println("El club ha sido borrado");
             	 break;
               case 5:
-
+            	  System.out.println("Ingresa el ID del club donde esta el socio");
+            	  String idCR = reader.nextLine();
+            	  
+            	  System.out.println("Ingresa el ID del socio que quieres borrar");
+            	  String partToDelete = reader.nextLine();
+            	  
+            	  information.deletePartner(idCR, partToDelete);
+            	  
+            	  System.out.println("El socio ha sido borrado");
             	  break;
               case 6:
-
+            	  System.out.println("Ingresa la ID del club donde esta la mascota");
+            	  String idCM = reader.nextLine();
+            	  
+            	  System.out.println("Ingresa la ID del socio que tiene la mascota");
+            	  String idPa = reader.nextLine();
+            	  
+            	  System.out.println("Ingresa el nombre de la mascota a borrar");
+            	  String petToDelete = reader.nextLine();
+            	  
+            	  information.deletePet(idCM, idPa, petToDelete);
+            	  
+            	  System.out.println("Se ha borrado a la mascota");
             	 break;
               case 7:
 

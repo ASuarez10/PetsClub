@@ -60,12 +60,8 @@ public class Information {
 			if(clubToDelete.equals(clubs.get(i).getId())) {
 				esta = true;
 				clubs.remove(i);
-			}else if(clubToDelete.equals(clubs.get(i).getName())) {
-				esta = true;
-				clubs.remove(i);
 			}
-		}
-		
+		}	
 	}
 	
 	/**
@@ -116,6 +112,17 @@ public class Information {
 			}
 		}
 		
+	}
+	
+	public void deletePet(String idCM, String idPa, String petToDelete) {
+		boolean esta = false;
+		
+		for(int i = 0; i < clubs.size() && !esta; i++) {
+			if(idCM.equals(clubs.get(i).getId())) {
+				esta = true;
+				clubs.get(i).deletePet(idPa, petToDelete);
+			}
+		}
 	}
 	
 }//final
