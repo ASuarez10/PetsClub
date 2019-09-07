@@ -21,8 +21,7 @@ public class Main {
         Main m = new Main ();
         m. showMessageExample();
     }
-
-
+      
     public void showMessageExample () {
 
         System.out.println("-----------------------------------------------------------");
@@ -115,18 +114,71 @@ public class Main {
             	  System.out.println("Ingresa la mascota favorita del socio");
             	  String fpS = reader.nextLine();
             	  
-            	  Partner nP = new Partner(idS, noS, apS, c, fpS);
+            	  Partner nS = new Partner(idS, noS, apS, c, fpS);
             	  
-            	  information.addPartner(idC, nP);
+            	  information.addPartner(idC, nS);
             	  
             	  System.out.println("Se ha agregado al socio");
             	 break;
 
               case 3:
-
+            	  System.out.println("Ingresa la identificacion del club al que le quieres agregar la mascota");
+            	  String idCP = reader.nextLine();
+            	  reader.nextLine();
+            	  
+            	  System.out.println("Ingresa la identificacion del socio al que le quieres agregar la mascota");
+            	  String idSP = reader.nextLine();
+            	  reader.nextLine();
+            	  
+            	  System.out.println("Ingresa la identificacion de la mascota");
+            	  String idP = reader.nextLine();
+            	  reader.nextLine();
+            	  
+            	  System.out.println("Ingresa el nombre de la mascota");
+            	  String noP = reader.nextLine();
+            	  reader.nextLine();
+            	  
+            	  System.out.println("Ingresa el dia de nacimiento de la mascota en numeros");
+            	  int dNP = reader.nextInt();
+            	  reader.nextLine();
+            	  
+            	  System.out.println("Ingresa el mes de nacimiento de la mascota en numeros");
+            	  int mNP = reader.nextInt();
+            	  
+            	  System.out.println("Ingresa el año de nacimiento de la mascota en numeros");
+            	  int aNP = reader.nextInt();
+            	  
+            	  Calendar p = new GregorianCalendar(aNP, mNP, dNP);
+            	  
+            	  System.out.println("Ingresa 1 si es macho o 2 si es hembra");
+            	  int gender = reader.nextInt();
+            	  boolean bien = false;
+            	  
+            	  while(!bien) {
+            		  
+            		  if(gender != 1 && gender != 2) {
+            			  System.out.println("Valor equivocado. Ingresa 1 si es macho o 2 si es hembra");
+            		  }else {
+            			  bien = true;
+            		  }
+            	  }
+            	  
+            	  System.out.println("Ingresa el tipo de mascota");
+            	  String tyP = reader.nextLine();
+            	  
+            	  Pet nP = new Pet(idP, noP, p, gender, tyP);
+            	  
+            	  information.addPet(idCP, idSP, nP);
+            	  
+            	  System.out.println("Se ha agregado la mascota");
             	 break;
               case 4:
+            	  System.out.println("Ingresa el ID o el nombre del club que quieres borrar");
+            	  String cTD = reader.nextLine();
             	  
+            	  information.deleteClub(cTD);
+            	  
+            	  System.out.println("El club ha sido borrado");
             	 break;
               case 5:
 
