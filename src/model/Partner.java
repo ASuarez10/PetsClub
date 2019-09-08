@@ -1,9 +1,11 @@
 
 package model;
 import java.io.*;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+import java.io.PrintWriter;
 
 public class Partner implements Serializable {
 
@@ -290,6 +292,34 @@ public class Partner implements Serializable {
 		msj += "]";
 		
 		return msj;
+	}
+	
+	public void listPetByID() {
+		ArrayList<Pet> list = pets;
+		
+		  for (int i = 0; i < list.size() - 1; i++){
+		   int min = i;
+		   for (int j = i + 1; j < list.size(); j++){
+		    if (list.get(j).getId().compareTo(list.get(min).getId()) < 0){
+		     min = j;
+		    }
+		   }
+		   if (i != min){
+		    Pet aux= list.get(i);
+		    list.set(i, list.get(min));
+		    list.set(min, aux);
+		   }
+		  }
+		 
+		  try {
+	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPetsOrderedByID.txt", "UTF-8");
+	            for(int i = 0; i < list.size(); i++) {
+	          	  writer.println(list.get(i));
+	            }
+	            writer.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	          }
 	}
 	
 }//final

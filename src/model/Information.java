@@ -1,5 +1,6 @@
 package model;
 import java.util.ArrayList;
+import java.io.PrintWriter;
 
 public class Information {
 	
@@ -123,6 +124,44 @@ public class Information {
 				clubs.get(i).deletePet(idPa, petToDelete);
 			}
 		}
+	}
+	
+	/**
+	 * Method to have an ordered list of number of partners
+	 * @return ordered list
+	 */
+	
+	public void orderByPartners(){
+		ArrayList<Club> list = clubs;
+		
+        for(int i = 0; i < list.size() - 1; i++){
+
+            for(int j = 0; j < list.size() - 1; j++){
+
+                if (list.get(j).numberOfPartners() < list.get(j+1).numberOfPartners()){
+
+                    Club tmp = list.get(j+1);
+
+                    list.set(j+1, list.get(j));
+
+                    list.set(j, tmp);
+
+                }
+
+            }
+
+        }
+		
+        try {
+          PrintWriter writer = new PrintWriter("files\\\\ArchiveOfClubs.txt", "UTF-8");
+          for(int i = 0; i < list.size(); i++) {
+        	  writer.println(list.get(i));
+          }
+          writer.close();
+      } catch (Exception e) {
+          e.printStackTrace();
+      }
+		
 	}
 	
 }//final

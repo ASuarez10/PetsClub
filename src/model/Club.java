@@ -1,4 +1,5 @@
 package model;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 
@@ -207,9 +208,56 @@ public class Club {
 		}	
 	}
 	
+	//numberOfPartners
+	
+	public int numberOfPartners() {
+		return partners.size();
+	}
 	
 	//partnersList
 	
+	@Override
+	public String toString() {
+		return "Club [id=" + id + ", name=" + name + ", creationDate=" + creationDate + ", petsType=" + petsType + "]";
+	}
+	
+	/**
+	 * Method to have an ordered list of number of pets
+	 * @return ordered list
+	 */
+	
+	public void orderByPets(){
+		ArrayList<Partner> list = partners;
+		
+        for(int i = 0; i < list.size() - 1; i++){
+
+            for(int j = 0; j < list.size() - 1; j++){
+
+                if (list.get(j).numberOfPets() < list.get(j+1).numberOfPets()){
+
+                    Partner tmp = list.get(j+1);
+
+                    list.set(j+1, list.get(j));
+
+                    list.set(j, tmp);
+
+                }
+
+            }
+
+        }
+        
+        try {
+            PrintWriter writer = new PrintWriter("files\\ArchiveOfPartners.txt", "UTF-8");
+            for(int i = 0; i < list.size(); i++) {
+          	  writer.println(list.get(i));
+            }
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+          }     
+	}
+
 	public void partnersList() {
 		
 	}
