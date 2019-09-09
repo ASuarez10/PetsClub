@@ -208,13 +208,19 @@ public class Club {
 		}	
 	}
 	
-	//numberOfPartners
+	/**
+	 * Method to have the number of partners in the club
+	 * @return  number of partners
+	 */
 	
 	public int numberOfPartners() {
 		return partners.size();
 	}
 	
-	//partnersList
+	/**
+	 * Method to have the club's information
+	 * @return club's info
+	 */
 	
 	@Override
 	public String toString() {
@@ -258,14 +264,159 @@ public class Club {
           }     
 	}
 
-	public void partnersList() {
+	/**
+	 * Method to generate an archive with an ordered list of partners by ID
+	 */
+	public void listPartnerByID() {
+		ArrayList<Partner> list = partners;
 		
+		  for (int i = 0; i < list.size() - 1; i++){
+		   int min = i;
+		   for (int j = i + 1; j < list.size(); j++){
+		    if (list.get(j).getId().compareTo(list.get(min).getId()) < 0){
+		     min = j;
+		    }
+		   }
+		   if (i != min){
+		    Partner aux= list.get(i);
+		    list.set(i, list.get(min));
+		    list.set(min, aux);
+		   }
+		  }
+		 
+		  try {
+	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPartnersOrderedByID.txt", "UTF-8");
+	            for(int i = 0; i < list.size(); i++) {
+	          	  writer.println(list.get(i));
+	            }
+	            writer.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	          }
 	}
 	
-	//petsList
-	
-	public void petsList() {
+	/**
+	 * Method to generate an archive with an ordered list of partners by name
+	 */
+	public void listPartnerByName() {
+		ArrayList<Partner> list = partners;
 		
+		  for (int i = 0; i < list.size() - 1; i++){
+		   int min = i;
+		   for (int j = i + 1; j < list.size(); j++){
+		    if (list.get(j).getName().compareTo(list.get(min).getName()) < 0){
+		     min = j;
+		    }
+		   }
+		   if (i != min){
+		    Partner aux= list.get(i);
+		    list.set(i, list.get(min));
+		    list.set(min, aux);
+		   }
+		  }
+		 
+		  try {
+	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPartnersOrderedByName.txt", "UTF-8");
+	            for(int i = 0; i < list.size(); i++) {
+	          	  writer.println(list.get(i));
+	            }
+	            writer.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	          }
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of partners by last name
+	 */
+	public void listPartnerByLastName() {
+		ArrayList<Partner> list = partners;
+		
+		  for (int i = 0; i < list.size() - 1; i++){
+		   int min = i;
+		   for (int j = i + 1; j < list.size(); j++){
+		    if (list.get(j).getLastName().compareTo(list.get(min).getLastName()) < 0){
+		     min = j;
+		    }
+		   }
+		   if (i != min){
+		    Partner aux= list.get(i);
+		    list.set(i, list.get(min));
+		    list.set(min, aux);
+		   }
+		  }
+		 
+		  try {
+	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPartnersOrderedByLastName.txt", "UTF-8");
+	            for(int i = 0; i < list.size(); i++) {
+	          	  writer.println(list.get(i));
+	            }
+	            writer.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	          }
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of partners by favorite pet
+	 */
+	public void listPartnerByFavoritePet() {
+		ArrayList<Partner> list = partners;
+		
+		  for (int i = 0; i < list.size() - 1; i++){
+		   int min = i;
+		   for (int j = i + 1; j < list.size(); j++){
+		    if (list.get(j).getFavoritePet().compareTo(list.get(min).getFavoritePet()) < 0){
+		     min = j;
+		    }
+		   }
+		   if (i != min){
+		    Partner aux= list.get(i);
+		    list.set(i, list.get(min));
+		    list.set(min, aux);
+		   }
+		  }
+		 
+		  try {
+	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPartnersOrderedByFavoritePet.txt", "UTF-8");
+	            for(int i = 0; i < list.size(); i++) {
+	          	  writer.println(list.get(i));
+	            }
+	            writer.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	          }
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of partners by age
+	 */
+	public void listPetByAge() {
+		ArrayList<Partner> list = partners;
+		
+		  for (int i = 0; i < list.size() - 1; i++){
+		   int min = i;
+		   for (int j = i + 1; j < list.size(); j++){
+		    if (list.get(j).calculateAge() < list.get(min).calculateAge()){
+		     min = j;
+		    }
+		   }
+		   if (i != min){
+		    Partner aux= list.get(i);
+		    list.set(i, list.get(min));
+		    list.set(min, aux);
+		   }
+		  }
+		 
+		  try {
+	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPartnersOrderedByAge.txt", "UTF-8");
+	            for(int i = 0; i < list.size(); i++) {
+	          	  writer.println(list.get(i));
+	            }
+	            writer.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	          }
 	}
 	
 }//final

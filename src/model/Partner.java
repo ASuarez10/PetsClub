@@ -294,6 +294,9 @@ public class Partner implements Serializable {
 		return msj;
 	}
 	
+	/**
+	 * Method to generate an archive with an ordered list of pets by ID
+	 */
 	public void listPetByID() {
 		ArrayList<Pet> list = pets;
 		
@@ -313,6 +316,130 @@ public class Partner implements Serializable {
 		 
 		  try {
 	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPetsOrderedByID.txt", "UTF-8");
+	            for(int i = 0; i < list.size(); i++) {
+	          	  writer.println(list.get(i));
+	            }
+	            writer.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	          }
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of pets by Name
+	 */
+	public void listPetByName() {
+		ArrayList<Pet> list = pets;
+		
+		  for (int i = 0; i < list.size() - 1; i++){
+		   int min = i;
+		   for (int j = i + 1; j < list.size(); j++){
+		    if (list.get(j).getName().compareTo(list.get(min).getName()) < 0){
+		     min = j;
+		    }
+		   }
+		   if (i != min){
+		    Pet aux= list.get(i);
+		    list.set(i, list.get(min));
+		    list.set(min, aux);
+		   }
+		  }
+		 
+		  try {
+	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPetsOrderedByName.txt", "UTF-8");
+	            for(int i = 0; i < list.size(); i++) {
+	          	  writer.println(list.get(i));
+	            }
+	            writer.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	          }
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of pets by type
+	 */
+	public void listPetByType() {
+		ArrayList<Pet> list = pets;
+		
+		  for (int i = 0; i < list.size() - 1; i++){
+		   int min = i;
+		   for (int j = i + 1; j < list.size(); j++){
+		    if (list.get(j).getType().compareTo(list.get(min).getType()) < 0){
+		     min = j;
+		    }
+		   }
+		   if (i != min){
+		    Pet aux= list.get(i);
+		    list.set(i, list.get(min));
+		    list.set(min, aux);
+		   }
+		  }
+		 
+		  try {
+	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPetsOrderedByType.txt", "UTF-8");
+	            for(int i = 0; i < list.size(); i++) {
+	          	  writer.println(list.get(i));
+	            }
+	            writer.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	          }
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of pets by age
+	 */
+	public void listPetByAge() {
+		ArrayList<Pet> list = pets;
+		
+		  for (int i = 0; i < list.size() - 1; i++){
+		   int min = i;
+		   for (int j = i + 1; j < list.size(); j++){
+		    if (list.get(j).calculateAge() < list.get(min).calculateAge()){
+		     min = j;
+		    }
+		   }
+		   if (i != min){
+		    Pet aux= list.get(i);
+		    list.set(i, list.get(min));
+		    list.set(min, aux);
+		   }
+		  }
+		 
+		  try {
+	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPetsOrderedByAge.txt", "UTF-8");
+	            for(int i = 0; i < list.size(); i++) {
+	          	  writer.println(list.get(i));
+	            }
+	            writer.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	          }
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of pets by gender
+	 */
+	public void listPetByGender() {
+		ArrayList<Pet> list = pets;
+		
+		  for (int i = 0; i < list.size() - 1; i++){
+		   int min = i;
+		   for (int j = i + 1; j < list.size(); j++){
+		    if (list.get(j).getGender() < list.get(min).getGender()){
+		     min = j;
+		    }
+		   }
+		   if (i != min){
+		    Pet aux= list.get(i);
+		    list.set(i, list.get(min));
+		    list.set(min, aux);
+		   }
+		  }
+		 
+		  try {
+	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPetsOrderedByGender.txt", "UTF-8");
 	            for(int i = 0; i < list.size(); i++) {
 	          	  writer.println(list.get(i));
 	            }
