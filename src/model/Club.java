@@ -465,7 +465,7 @@ public class Club {
 	/**
 	 * Method to generate an archive with an ordered list of partners by age
 	 */
-	public void listPetByAge() {
+	public void listPartnerByAge() {
 		ArrayList<Partner> list = partners;
 		
 		  for (int i = 0; i < list.size() - 1; i++){
@@ -493,4 +493,73 @@ public class Club {
 	          }
 	}
 	
+	/**
+	 * Method to generate an archive with an ordered list of pets by ID
+	 * @param partID - club's ID
+	 */
+	public void listPetByID(String partID) {
+		boolean esta = false;
+		for(int i = 0; i < partners.size() && !esta; i++) {
+			if(partID.equals(partners.get(i).getId())) {
+				esta = true;
+				partners.get(i).listPetByID();
+			}
+		}
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of pets by name
+	 * @param partName - club's ID
+	 */
+	public void listPetByName(String partName) {
+		boolean esta = false;
+		for(int i = 0; i < partners.size() && !esta; i++) {
+			if(partName.equals(partners.get(i).getId())) {
+				esta = true;
+				partners.get(i).listPetByName();
+			}
+		}
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of pets by type
+	 * @param partType - club's ID
+	 */
+	public void listPetByType(String partType) {
+		boolean esta = false;
+		for(int i = 0; i < partners.size() && !esta; i++) {
+			if(partType.equals(partners.get(i).getId())) {
+				esta = true;
+				partners.get(i).listPetByType();
+			}
+		}
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of pets by age
+	 * @param partAge - club's ID
+	 */
+	public void listPetByAge(String partAge) {
+		boolean esta = false;
+		for(int i = 0; i < partners.size() && !esta; i++) {
+			if(partAge.equals(partners.get(i).getId())) {
+				esta = true;
+				partners.get(i).listPetByAge();
+			}
+		}
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of pets by gender
+	 * @param partGender - club's ID
+	 */
+	public void listPetByGender(String partGender) {
+		boolean esta = false;
+		for(int i = 0; i < partners.size() && !esta; i++) {
+			if(partGender.equals(partners.get(i).getId())) {
+				esta = true;
+				partners.get(i).listPetByGender();
+			}
+		}
+	}
 }//final

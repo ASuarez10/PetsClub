@@ -153,7 +153,7 @@ public class Information {
         }
 		
         try {
-          PrintWriter writer = new PrintWriter("files\\\\ArchiveOfClubs.txt", "UTF-8");
+          PrintWriter writer = new PrintWriter("files\\\\ArchiveOfClubsOrderedByNumberOfPartners.txt", "UTF-8");
           for(int i = 0; i < list.size(); i++) {
         	  writer.println(list.get(i));
           }
@@ -164,6 +164,9 @@ public class Information {
 		
 	}
 	
+	/**
+	 * Method to generate an archive with an ordered list of clubs by ID
+	 */
 	public void listClubByID() {
 		
 		ArrayList<Club> list = clubs;
@@ -188,6 +191,9 @@ public class Information {
           }		
 	}
 	
+	/**
+	 * Method to generate an archive with an ordered list of clubs by name
+	 */
 	public void listClubByName() {
 		
 		ArrayList<Club> list = clubs;
@@ -215,7 +221,7 @@ public class Information {
 	/**
 	 * Method to generate an archive with an ordered list of partners by age
 	 */
-	public void listPetByAge() {
+	public void listClubByAge() {
 		ArrayList<Club> list = clubs;
 		
 		  for (int i = 0; i < list.size() - 1; i++){
@@ -243,6 +249,9 @@ public class Information {
 	          }
 	}
 	
+	/**
+	 * Method to generate an archive with an ordered list of clubs by pets type
+	 */
 	public void listClubByPetsType() {
 		
 		ArrayList<Club> list = clubs;
@@ -266,4 +275,185 @@ public class Information {
             e.printStackTrace();
           }		
 	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of clubs by pets
+	 * @param idClub - club's ID
+	 */
+	public String orderByPets(String idClub) {
+		String msj = "El club no esta registrado";
+		boolean esta = false;
+		
+		for(int i = 0; i < clubs.size() && !esta; i++) {
+			if(idClub.equals(clubs.get(i).getId())) {
+				esta = true;
+				msj = "Se ha generado el listado";
+				clubs.get(i).orderByPets();		
+			}
+		}		
+		return msj;
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of clubs
+	 */
+	public void clubsList() {
+		
+        try {
+          PrintWriter writer = new PrintWriter("files\\ArchiveOfClubs.txt", "UTF-8");
+          for(int i = 0; i < clubs.size(); i++) {
+        	  writer.println(clubs.get(i));
+          }
+          writer.close();
+        } catch (Exception e) {
+          e.printStackTrace();
+          }
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of pets by ID
+	 * @param clubID - club's ID
+	 * @param partID - partner's ID
+	 */
+	public void listPetByID(String clubID, String partID) {
+		boolean esta = false;
+		for(int i = 0; i < clubs.size() && !esta; i++) {
+			if(clubID.equals(clubs.get(i).getId())) {
+				esta = true;
+				clubs.get(i).listPetByID(partID);
+			}
+		}
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of pets by name
+	 * @param clubName - club's ID
+	 * @param partName - partner's ID
+	 */
+	public void listPetByName(String clubName, String partName) {
+		boolean esta = false;
+		for(int i = 0; i < clubs.size() && !esta; i++) {
+			if(clubName.equals(clubs.get(i).getId())) {
+				esta = true;
+				clubs.get(i).listPetByName(partName);
+			}
+		}
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of pets by type
+	 * @param clubType - club's ID
+	 * @param partType - partner's ID
+	 */
+	public void listPetByType(String clubType, String partType) {
+		boolean esta = false;
+		for(int i = 0; i < clubs.size() && !esta; i++) {
+			if(clubType.equals(clubs.get(i).getId())) {
+				esta = true;
+				clubs.get(i).listPetByAge(partType);
+			}
+		}
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of pets by age
+	 * @param clubAge - club's ID
+	 * @param partAge - partner's ID
+	 */
+	public void listPetByAge(String clubAge, String partAge) {
+		boolean esta = false;
+		for(int i = 0; i < clubs.size() && !esta; i++) {
+			if(clubAge.equals(clubs.get(i).getId())) {
+				esta = true;
+				clubs.get(i).listPetByAge(partAge);
+			}
+		}
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of pets by gender
+	 * @param clubGender - club's ID
+	 * @param partGender - partner's ID
+	 */
+	public void listPetByGender(String clubGender, String partGender) {
+		boolean esta = false;
+		for(int i = 0; i < clubs.size() && !esta; i++) {
+			if(clubGender.equals(clubs.get(i).getId())) {
+				esta = true;
+				clubs.get(i).listPetByGender(partGender);
+			}
+		}
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of partners by ID
+	 * @param pClubID - club's ID
+	 */
+	public void listPartnerByID(String pClubID) {
+		boolean esta = false;
+		for(int i = 0; i < clubs.size() && !esta; i++) {
+			if(pClubID.equals(clubs.get(i).getId())) {
+				esta = true;
+				clubs.get(i).listPartnerByID();
+			}
+		}
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of partners by name
+	 * @param pClubName - club's ID
+	 */
+	public void listPartnerByName(String pClubName) {
+		boolean esta = false;
+		for(int i = 0; i < clubs.size() && !esta; i++) {
+			if(pClubName.equals(clubs.get(i).getId())) {
+				esta = true;
+				clubs.get(i).listPartnerByName();
+			}
+		}
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of partners by last name
+	 * @param pClubLastName - club's ID
+	 */
+	public void listPartnerByLastName(String pClubLastName) {
+		boolean esta = false;
+		for(int i = 0; i < clubs.size() && !esta; i++) {
+			if(pClubLastName.equals(clubs.get(i).getId())) {
+				esta = true;
+				clubs.get(i).listPartnerByLastName();
+			}
+		}
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of partners by favorite pet
+	 * @param pClubFavoritePet - club's ID
+	 */
+	public void listPartnerByFavoritePet(String pClubFavoritePet) {
+		boolean esta = false;
+		for(int i = 0; i < clubs.size() && !esta; i++) {
+			if(pClubFavoritePet.equals(clubs.get(i).getId())) {
+				esta = true;
+				clubs.get(i).listPartnerByFavoritePet();
+			}
+		}
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of partners by age
+	 * @param pClubAge - club's ID
+	 */
+	public void listPartnerByAge(String pClubAge) {
+		boolean esta = false;
+		for(int i = 0; i < clubs.size() && !esta; i++) {
+			if(pClubAge.equals(clubs.get(i).getId())) {
+				esta = true;
+				clubs.get(i).listPartnerByAge();
+			}
+		}
+	}
+	
+	
 }//final
