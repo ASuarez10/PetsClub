@@ -72,13 +72,22 @@ public class Main {
             	  System.out.println("Ingresa el nombre del club");
             	  String nCA = reader.nextLine();
             	  
-            	  System.out.println("Ingresa la fecha de creacion del club");
-            	  String cDT = reader.nextLine();
+            	  System.out.println("Ingresa el dia de nacimiento del socio en numeros");
+            	  int dCC = reader.nextInt();
+            	  reader.nextLine();
+            	  
+            	  System.out.println("Ingresa el mes de nacimiento del socio en numeros");
+            	  int mCC = reader.nextInt();
+            	  
+            	  System.out.println("Ingresa el año de nacimiento del socio en numeros");
+            	  int aCC = reader.nextInt();
+            	  
+            	  Calendar cC = new GregorianCalendar(aCC, mCC, dCC);
             	  
             	  System.out.println("Ingresa los tipos de mascotas del club");
             	  String pTp = reader.nextLine();
             	  
-            	  Club nC = new Club(idCA, nCA, cDT, pTp);
+            	  Club nC = new Club(idCA, nCA, cC, pTp);
             	  
             	  information.addClub(nC);
             	  

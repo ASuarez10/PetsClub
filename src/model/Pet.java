@@ -224,7 +224,7 @@ public class Pet implements Serializable{
 	@Override
 	public String toString() {
 		return "Pet [id=" + id + ", name=" + name + ", gender="
-				+ gender + ", type=" + type + ", age=" + calculateAge() + "]";
+				+ gender + ", type=" + type + ", birth date=" + fNacimiento + "]";
 	}
 
 	

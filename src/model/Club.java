@@ -1,6 +1,8 @@
 package model;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 
 public class Club {
@@ -18,11 +20,13 @@ public class Club {
 	/**
 	 * Club's creation date
 	 */
-	private String creationDate;
+	private int day, month, year;
 	/**
 	 * Club's pets type
 	 */
 	private String petsType;
+	
+	Calendar fNacimiento = new GregorianCalendar(year, month, day);
 	
 	//Relations
 	
@@ -37,13 +41,13 @@ public class Club {
 		 * Constructor of Club's class
 		 * @param id - Club's identification
 		 * @param name - Club's name
-		 * @param creationDate - Club's creation date
+		 * @param fNacimiento - Club's creation date
 		 * @param date - Club's pets type
 		 */
-	  public Club(String id, String name, String creationDate, String petsType) {
+	  public Club(String id, String name, Calendar fNacimiento, String petsType) {
 		  this.id = id;
 		  this.name = name;
-		  this.creationDate = creationDate;
+		  this.fNacimiento = fNacimiento;
 		  this.petsType = petsType;
 		  partners = new ArrayList<Partner>();
 	  }
@@ -81,19 +85,19 @@ public class Club {
 	}
 
 	/**
-	 * Method to give the attribute creationDate
-	 * @return creationDate
+	 * Method to give the attribute fNacimiento
+	 * @return creation date
 	 */
-	public String getCreationDate() {
-		return creationDate;
+	public Calendar getfNacimiento() {
+		return fNacimiento;
 	}
 
 	/**
-	 * Method to modify the attribute creationDate
-	 * @param creationDate - new creation date
+	 * Method to modify the attribute fNacimiento
+	 * @param fNacimiento - new creation date
 	 */
-	public void setCreationDate(String creationDate) {
-		this.creationDate = creationDate;
+	public void setfNacimiento(Calendar fNacimiento) {
+		this.fNacimiento = fNacimiento;
 	}
 
 	/**
@@ -127,6 +131,76 @@ public class Club {
 	public void setPartners(ArrayList<Partner> partners) {
 		this.partners = partners;
 	}
+	
+	/**
+	 * Method to give the attribute day
+	 * @return day
+	 */
+	public int getDay() {
+		return day;
+	}
+	
+	/**
+	 * Method to modify the attribute day
+	 * @param day - new day
+	 */
+	public void setDay(int day) {
+		this.day = day;
+	}
+
+	/**
+	 * Method to give the attribute month
+	 * @return month
+	 */
+	public int getMonth() {
+		return month;
+	}
+
+	/**
+	 * Method to modify the attribute month
+	 * @param month - new month
+	 */
+	public void setMonth(int month) {
+		this.month = month;
+	}
+
+	/**
+	 * Method to give the attribute year
+	 * @return year
+	 */
+	public int getYear() {
+		return year;
+	}
+
+	/**
+	 * Method to modify the attribute year
+	 * @param year - new year
+	 */
+	public void setYear(int year) {
+		this.year = year;
+	}
+	
+	/**
+	 * Method to calculate the club's age
+	 * @return years
+	 */
+	public int calculateAge() {
+        Calendar cDate = Calendar.getInstance();
+
+
+        int years = cDate.get(Calendar.YEAR) - fNacimiento.get(Calendar.YEAR);
+
+        int months = cDate.get(Calendar.MONTH) - fNacimiento.get(Calendar.MONTH);
+
+        int days = cDate.get(Calendar.DAY_OF_MONTH) - fNacimiento.get(Calendar.DAY_OF_MONTH);
+
+        if(months < 0 || (months==0 && days < 0)) { 
+
+            years--;
+
+        }
+        return years;
+    }
 	
 	//addPartner
 	
@@ -224,7 +298,7 @@ public class Club {
 	
 	@Override
 	public String toString() {
-		return "Club [id=" + id + ", name=" + name + ", creationDate=" + creationDate + ", petsType=" + petsType + "]";
+		return "Club [id=" + id + ", name=" + name + ", creation date=" + fNacimiento + ", petsType=" + petsType + "]";
 	}
 	
 	/**

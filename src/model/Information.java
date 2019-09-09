@@ -158,10 +158,112 @@ public class Information {
         	  writer.println(list.get(i));
           }
           writer.close();
-      } catch (Exception e) {
+        } catch (Exception e) {
           e.printStackTrace();
-      }
+          }
 		
 	}
 	
+	public void listClubByID() {
+		
+		ArrayList<Club> list = clubs;
+
+		for(int i = 1; i < list.size(); i++) {
+			for(int j = i; j > 0 && list.get(j-1).getId().compareTo(list.get(j).getId()) > 0; j--) {
+				
+				Club temp = list.get(j);
+				list.set(j, list.get(j-1));
+				list.set(j-1, temp);			
+			}
+		}
+		
+		try {
+            PrintWriter writer = new PrintWriter("files\\ArchiveOfClubsOrderedByID.txt", "UTF-8");
+            for(int i = 0; i < list.size(); i++) {
+          	  writer.println(list.get(i));
+            }
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+          }		
+	}
+	
+	public void listClubByName() {
+		
+		ArrayList<Club> list = clubs;
+
+		for(int i = 1; i < list.size(); i++) {
+			for(int j = i; j > 0 && list.get(j-1).getName().compareTo(list.get(j).getName()) > 0; j--) {
+				
+				Club temp = list.get(j);
+				list.set(j, list.get(j-1));
+				list.set(j-1, temp);			
+			}
+		}
+		
+		try {
+            PrintWriter writer = new PrintWriter("files\\ArchiveOfClubsOrderedByName.txt", "UTF-8");
+            for(int i = 0; i < list.size(); i++) {
+          	  writer.println(list.get(i));
+            }
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+          }		
+	}
+	
+	/**
+	 * Method to generate an archive with an ordered list of partners by age
+	 */
+	public void listPetByAge() {
+		ArrayList<Club> list = clubs;
+		
+		  for (int i = 0; i < list.size() - 1; i++){
+		   int min = i;
+		   for (int j = i + 1; j < list.size(); j++){
+		    if (list.get(j).calculateAge() < list.get(min).calculateAge()){
+		     min = j;
+		    }
+		   }
+		   if (i != min){
+		    Club aux= list.get(i);
+		    list.set(i, list.get(min));
+		    list.set(min, aux);
+		   }
+		  }
+		 
+		  try {
+	            PrintWriter writer = new PrintWriter("files\\ArchiveOfClubssOrderedByAge.txt", "UTF-8");
+	            for(int i = 0; i < list.size(); i++) {
+	          	  writer.println(list.get(i));
+	            }
+	            writer.close();
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	          }
+	}
+	
+	public void listClubByPetsType() {
+		
+		ArrayList<Club> list = clubs;
+
+		for(int i = 1; i < list.size(); i++) {
+			for(int j = i; j > 0 && list.get(j-1).getPetsType().compareTo(list.get(j).getPetsType()) > 0; j--) {
+				
+				Club temp = list.get(j);
+				list.set(j, list.get(j-1));
+				list.set(j-1, temp);			
+			}
+		}
+		
+		try {
+            PrintWriter writer = new PrintWriter("files\\ArchiveOfClubsOrderedByPetsType.txt", "UTF-8");
+            for(int i = 0; i < list.size(); i++) {
+          	  writer.println(list.get(i));
+            }
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+          }		
+	}
 }//final

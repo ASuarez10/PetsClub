@@ -282,7 +282,7 @@ public class Partner implements Serializable {
 	
 	@Override
 	public String toString() {
-		String msj= "Partner [id=" + id + ", name=" + name + ", last name=" + lastName + ", age=" + calculateAge() + ", favorite pet="
+		String msj= "Partner [id=" + id + ", name=" + name + ", last name=" + lastName + ", birth date=" + fNacimiento + ", favorite pet="
 				+ favoritePet + ", pets= ";
 		
 		for(int i = 0; i < pets.size(); i++) {
