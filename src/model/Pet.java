@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.GregorianCalendar;
 import java.util.Calendar;
 
-public class Pet implements Serializable{
+public class Pet implements Serializable, Comparable<Pet>{
 
 	//Constants
 	
@@ -225,6 +225,11 @@ public class Pet implements Serializable{
 	public String toString() {
 		return "Pet [id=" + id + ", name=" + name + ", gender="
 				+ gender + ", type=" + type + ", birth date=" + fNacimiento + "]";
+	}
+
+	@Override
+	public int compareTo(Pet a) {
+		return name.compareToIgnoreCase(a.getName());
 	}
 
 	

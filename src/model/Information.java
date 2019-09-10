@@ -454,6 +454,81 @@ public class Information {
 			}
 		}
 	}
+	 
+	public String searchClubID(String srCID) {
+		String msj = "El club no esta registrado";
+		ArrayList<Club> list = clubs;
+
+		for(int i = 1; i < list.size(); i++) {
+			for(int j = i; j > 0 && list.get(j-1).getId().compareTo(list.get(j).getId()) > 0; j--) {
+				
+				Club temp = list.get(j);
+				list.set(j, list.get(j-1));
+				list.set(j-1, temp);			
+			}
+		}
+		
+		long time1 = System.nanoTime();
+		boolean esta = false;
+		for(int i = 0; i < list.size() && !esta; i++) {
+			if(srCID.equals(list.get(i).getId())) {
+				esta = true;
+				msj = "El club esta registrado";
+			}
+		}
+		long time2 = System.nanoTime();
+		
+		long total = time2 - time1;
+		
+		long time3 = System.nanoTime();
+		boolean esta1 = false;
+		int inicio = 0;
+		int fin = (list.size() -1);
+		while(inicio <= fin && !esta1) {
+			int medio = (inicio + fin)/2;
+			if(srCID.compareTo(list.get(medio).getId()) == 0) {
+				esta1 = true;
+			}else if(list.get(medio).getId().compareTo(srCID) > 0) {
+				fin = medio - 1;
+			}else {
+				inicio = medio + 1;
+			}
+		}
+		long time4 = System.nanoTime();
+		
+		long total1 = time4 - time3;
+		
+		msj += "\n"
+				+ "Tiempo de busqueda tradicional " + total + "\n"
+						+ "Tiempo de busqueda binaria " + total1;
+		return msj;
+	}
 	
+	public String searchPartnerID(String srCP, String srPID) {
+		String msj = "El club no esta registrado";
+		boolean esta = false;
+		
+		for(int i = 0; i < clubs.size() && !esta; i++) {
+			if(srCP.equals(clubs.get(i).getId())) {
+				esta = true;
+				msj = clubs.get(i).searchPartnerID(srPID);
+			}
+		}
+		
+		return msj;
+	}
+	
+	public String searchPetName(String srCPe, String srPP, String srPeName) {
+		String msj = "El club no esta registrado";
+		boolean esta = false;
+		for(int i = 0; i < clubs.size() && !esta; i++) {
+			if(srCPe.equals(clubs.get(i).getId())) {
+				esta = true;
+				msj = clubs.get(i).searchPetName(srPP, srPeName);
+			}
+		}
+		
+		return msj;
+	}
 	
 }//final

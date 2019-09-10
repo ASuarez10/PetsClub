@@ -379,7 +379,46 @@ public class Main {
             	  information.orderByPartners();
                  break;
              case 13:
-
+            	 System.out.println("Seleccione que quiere buscar: \n"
+            	 		+ "1. Club \n"
+            	 		+ "2. Socio \n"
+            	 		+ "3. Mascota");
+            	 int srS = reader.nextInt();
+            	 boolean srBien = false;
+            	 while(!srBien) {
+           		  
+           		  if(srS < 1 || srS > 3) {
+           			  System.out.println("Valor equivocado. Ingresa 1. Club, 2. Socio, 3. Mascota");
+           		  }else {
+           			  srBien = true;
+           		  }
+           	  	 }
+            	 if(srS == 1) {
+            		 System.out.println("Ingrese la ID del club que va a buscar");
+            		 String srCID = reader.nextLine();
+            		 
+            		 System.out.println(information.searchClubID(srCID));
+            	 }else if(srS == 2) {
+            		 System.out.println("Ingrese la ID del club donde esta el socio");
+            		 String srCP = reader.nextLine();
+            		 
+            		 System.out.println("Ingrese la ID del socio");
+            		 String srPID = reader.nextLine();
+            		 
+            		 System.out.println(information.searchPartnerID(srCP, srPID));
+            	 }else {
+            		 System.out.println("Ingrese la ID del club donde esta la mascota");
+            		 String srCPe = reader.nextLine();
+            		 
+            		 System.out.println("Ingrese la ID del socio que tiene la mascota");
+            		 String srPP = reader.nextLine();
+            		 
+            		 System.out.println("Ingrese el nombre de la mascota");
+            		 String srPeName = reader.nextLine();
+            		 
+            		 System.out.println(information.searchPetName(srCPe, srPP, srPeName));
+            	 }
+            	 
                  break;
 
           }
@@ -390,4 +429,4 @@ public class Main {
     public void init(){
 
     }
-}
+}//final

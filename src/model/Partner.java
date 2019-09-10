@@ -7,7 +7,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.io.PrintWriter;
 
-public class Partner implements Serializable {
+public class Partner implements Serializable, Comparable<Partner> {
 
 	//Attributes
 	
@@ -449,4 +449,57 @@ public class Partner implements Serializable {
 	          }
 	}
 	
+	public String searchPetName(String srPeName) {
+		String msj = "El club no esta registrado";
+		ArrayList<Pet> list = pets;
+
+		for(int i = 1; i < list.size(); i++) {
+			for(int j = i; j > 0 && list.get(j-1).getName().compareTo(list.get(j).getName()) > 0; j--) {
+				
+				Pet temp = list.get(j);
+				list.set(j, list.get(j-1));
+				list.set(j-1, temp);			
+			}
+		}
+		
+		long time1 = System.nanoTime();
+		boolean esta = false;
+		for(int i = 0; i < list.size() && !esta; i++) {
+			if(srPeName.equals(list.get(i).getName())) {
+				esta = true;
+				msj = "El club esta registrado";
+			}
+		}
+		long time2 = System.nanoTime();
+		
+		long total = time2 - time1;
+		
+		long time3 = System.nanoTime();
+		boolean esta1 = false;
+		int inicio = 0;
+		int fin = (list.size() -1);
+		while(inicio <= fin && !esta1) {
+			int medio = (inicio + fin)/2;
+			if(srPeName.compareTo(list.get(medio).getName()) == 0) {
+				esta1 = true;
+			}else if(list.get(medio).getName().compareTo(srPeName) > 0) {
+				fin = medio - 1;
+			}else {
+				inicio = medio + 1;
+			}
+		}
+		long time4 = System.nanoTime();
+		
+		long total1 = time4 - time3;
+		
+		msj += "\n"
+				+ "Tiempo de busqueda tradicional " + total + "\n"
+						+ "Tiempo de busqueda binaria " + total1;
+		return msj;
+	}
+
+	@Override
+	public int compareTo(Partner o) {
+		return id.compareToIgnoreCase(o.getId());
+	}
 }//final

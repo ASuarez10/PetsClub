@@ -1,11 +1,12 @@
 package model;
 import java.io.PrintWriter;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 
-public class Club {
+public class Club implements Serializable, Comparable<Club> {
 
 	//Attributes
 	
@@ -561,5 +562,72 @@ public class Club {
 				partners.get(i).listPetByGender();
 			}
 		}
+	}
+	
+	public String searchPartnerID(String srPID) {
+		String msj = "El club no esta registrado";
+		ArrayList<Partner> list = partners;
+
+		for(int i = 1; i < list.size(); i++) {
+			for(int j = i; j > 0 && list.get(j-1).getId().compareTo(list.get(j).getId()) > 0; j--) {
+				
+				Partner temp = list.get(j);
+				list.set(j, list.get(j-1));
+				list.set(j-1, temp);			
+			}
+		}
+		
+		long time1 = System.nanoTime();
+		boolean esta = false;
+		for(int i = 0; i < list.size() && !esta; i++) {
+			if(srPID.equals(list.get(i).getId())) {
+				esta = true;
+				msj = "El club esta registrado";
+			}
+		}
+		long time2 = System.nanoTime();
+		
+		long total = time2 - time1;
+		
+		long time3 = System.nanoTime();
+		boolean esta1 = false;
+		int inicio = 0;
+		int fin = (list.size() -1);
+		while(inicio <= fin && !esta1) {
+			int medio = (inicio + fin)/2;
+			if(srPID.compareTo(list.get(medio).getId()) == 0) {
+				esta1 = true;
+			}else if(list.get(medio).getId().compareTo(srPID) > 0) {
+				fin = medio - 1;
+			}else {
+				inicio = medio + 1;
+			}
+		}
+		long time4 = System.nanoTime();
+		
+		long total1 = time4 - time3;
+		
+		msj += "\n"
+				+ "Tiempo de busqueda tradicional " + total + "\n"
+						+ "Tiempo de busqueda binaria " + total1;
+		return msj;
+	}
+	
+	public String searchPetName(String srPP, String srPeName) {
+		String msj = "El socio no esta registrado";
+		boolean esta = false;
+		for(int i = 0; i < partners.size() && !esta; i++) {
+			if(srPP.equals(partners.get(i).getId())) {
+				esta = true;
+				msj = partners.get(i).searchPetName(srPeName);
+			}
+		}
+		
+		return msj;
+	}
+
+	@Override
+	public int compareTo(Club o) {
+		return id.compareToIgnoreCase(o.getId());
 	}
 }//final
