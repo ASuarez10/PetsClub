@@ -3,10 +3,11 @@ import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.GregorianCalendar;
 
 
-public class Club implements Serializable, Comparable<Club> {
+public class Club implements Serializable, Comparable<Club>, Comparator<Club> {
 
 	//Attributes
 	
@@ -629,5 +630,10 @@ public class Club implements Serializable, Comparable<Club> {
 	@Override
 	public int compareTo(Club o) {
 		return id.compareToIgnoreCase(o.getId());
+	}
+
+	@Override
+	public int compare(Club o1, Club o2) {
+		return o1.getId().compareToIgnoreCase(o2.getId());
 	}
 }//final

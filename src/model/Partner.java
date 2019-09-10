@@ -4,10 +4,11 @@ import java.io.*;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Comparator;
 import java.util.GregorianCalendar;
 import java.io.PrintWriter;
 
-public class Partner implements Serializable, Comparable<Partner> {
+public class Partner implements Serializable, Comparable<Partner>, Comparator<Partner> {
 
 	//Attributes
 	
@@ -501,5 +502,10 @@ public class Partner implements Serializable, Comparable<Partner> {
 	@Override
 	public int compareTo(Partner o) {
 		return id.compareToIgnoreCase(o.getId());
+	}
+
+	@Override
+	public int compare(Partner o1, Partner o2) {
+		return o1.getId().compareToIgnoreCase(o2.getId());
 	}
 }//final

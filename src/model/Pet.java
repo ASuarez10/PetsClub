@@ -1,10 +1,12 @@
 
 package model;
 import java.io.*;
+
 import java.util.GregorianCalendar;
 import java.util.Calendar;
+import java.util.Comparator;
 
-public class Pet implements Serializable, Comparable<Pet>{
+public class Pet implements Serializable, Comparable<Pet>, Comparator<Pet>{
 
 	//Constants
 	
@@ -230,6 +232,11 @@ public class Pet implements Serializable, Comparable<Pet>{
 	@Override
 	public int compareTo(Pet a) {
 		return name.compareToIgnoreCase(a.getName());
+	}
+
+	@Override
+	public int compare(Pet o1, Pet o2) {
+		return o1.getName().compareToIgnoreCase(o2.getName());
 	}
 
 	
