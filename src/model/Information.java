@@ -153,7 +153,7 @@ public class Information {
         }
 		
         try {
-          PrintWriter writer = new PrintWriter("files\\\\ArchiveOfClubsOrderedByNumberOfPartners.txt", "UTF-8");
+          PrintWriter writer = new PrintWriter("files/ArchiveOfClubsOrderedByNumberOfPartners.txt", "UTF-8");
           for(int i = 0; i < list.size(); i++) {
         	  writer.println(list.get(i));
           }
@@ -165,6 +165,22 @@ public class Information {
 	}
 	
 	/**
+	 * Method to compare the ID of 2 clubs
+	 * @return A number that indicates if an ID is higher or less than another ID
+	 */
+	public int compare(Club c, Club p) {
+		int valor=0;
+		if(c.getId().compareToIgnoreCase(p.getId())>0) {
+			valor=1;
+		}else if(c.getId().compareToIgnoreCase(p.getId())<0) {
+			valor=-1;
+		}else {
+			valor=0;
+		}
+		return valor;
+	}
+	
+	/**
 	 * Method to generate an archive with an ordered list of clubs by ID
 	 */
 	public void listClubByID() {
@@ -172,7 +188,7 @@ public class Information {
 		ArrayList<Club> list = clubs;
 
 		for(int i = 1; i < list.size(); i++) {
-			for(int j = i; j > 0 && list.get(j-1).getId().compareTo(list.get(j).getId()) > 0; j--) {
+			for(int j = i; j > 0 && compare(list.get(j-1), list.get(j)) > 0; j--) { 
 				
 				Club temp = list.get(j);
 				list.set(j, list.get(j-1));
@@ -181,7 +197,7 @@ public class Information {
 		}
 		
 		try {
-            PrintWriter writer = new PrintWriter("files\\ArchiveOfClubsOrderedByID.txt", "UTF-8");
+            PrintWriter writer = new PrintWriter("files/ArchiveOfClubsOrderedByID.txt", "UTF-8");
             for(int i = 0; i < list.size(); i++) {
           	  writer.println(list.get(i));
             }
@@ -208,7 +224,7 @@ public class Information {
 		}
 		
 		try {
-            PrintWriter writer = new PrintWriter("files\\ArchiveOfClubsOrderedByName.txt", "UTF-8");
+            PrintWriter writer = new PrintWriter("files/ArchiveOfClubsOrderedByName.txt", "UTF-8");
             for(int i = 0; i < list.size(); i++) {
           	  writer.println(list.get(i));
             }
@@ -239,7 +255,7 @@ public class Information {
 		  }
 		 
 		  try {
-	            PrintWriter writer = new PrintWriter("files\\ArchiveOfClubssOrderedByAge.txt", "UTF-8");
+	            PrintWriter writer = new PrintWriter("files/ArchiveOfClubssOrderedByAge.txt", "UTF-8");
 	            for(int i = 0; i < list.size(); i++) {
 	          	  writer.println(list.get(i));
 	            }
@@ -266,7 +282,7 @@ public class Information {
 		}
 		
 		try {
-            PrintWriter writer = new PrintWriter("files\\ArchiveOfClubsOrderedByPetsType.txt", "UTF-8");
+            PrintWriter writer = new PrintWriter("files/ArchiveOfClubsOrderedByPetsType.txt", "UTF-8");
             for(int i = 0; i < list.size(); i++) {
           	  writer.println(list.get(i));
             }
@@ -300,7 +316,7 @@ public class Information {
 	public void clubsList() {
 		
         try {
-          PrintWriter writer = new PrintWriter("files\\ArchiveOfClubs.txt", "UTF-8");
+          PrintWriter writer = new PrintWriter("files/ArchiveOfClubs.txt", "UTF-8");
           for(int i = 0; i < clubs.size(); i++) {
         	  writer.println(clubs.get(i));
           }

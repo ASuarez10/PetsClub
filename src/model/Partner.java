@@ -316,7 +316,7 @@ public class Partner implements Serializable, Comparable<Partner>, Comparator<Pa
 		  }
 		 
 		  try {
-	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPetsOrderedByID.txt", "UTF-8");
+	            PrintWriter writer = new PrintWriter("files/ArchiveOfPetsOrderedByID.txt", "UTF-8");
 	            for(int i = 0; i < list.size(); i++) {
 	          	  writer.println(list.get(i));
 	            }
@@ -347,7 +347,7 @@ public class Partner implements Serializable, Comparable<Partner>, Comparator<Pa
 		  }
 		 
 		  try {
-	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPetsOrderedByName.txt", "UTF-8");
+	            PrintWriter writer = new PrintWriter("files/ArchiveOfPetsOrderedByName.txt", "UTF-8");
 	            for(int i = 0; i < list.size(); i++) {
 	          	  writer.println(list.get(i));
 	            }
@@ -378,7 +378,7 @@ public class Partner implements Serializable, Comparable<Partner>, Comparator<Pa
 		  }
 		 
 		  try {
-	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPetsOrderedByType.txt", "UTF-8");
+	            PrintWriter writer = new PrintWriter("files/ArchiveOfPetsOrderedByType.txt", "UTF-8");
 	            for(int i = 0; i < list.size(); i++) {
 	          	  writer.println(list.get(i));
 	            }
@@ -409,7 +409,7 @@ public class Partner implements Serializable, Comparable<Partner>, Comparator<Pa
 		  }
 		 
 		  try {
-	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPetsOrderedByAge.txt", "UTF-8");
+	            PrintWriter writer = new PrintWriter("files/ArchiveOfPetsOrderedByAge.txt", "UTF-8");
 	            for(int i = 0; i < list.size(); i++) {
 	          	  writer.println(list.get(i));
 	            }
@@ -440,7 +440,7 @@ public class Partner implements Serializable, Comparable<Partner>, Comparator<Pa
 		  }
 		 
 		  try {
-	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPetsOrderedByGender.txt", "UTF-8");
+	            PrintWriter writer = new PrintWriter("files/ArchiveOfPetsOrderedByGender.txt", "UTF-8");
 	            for(int i = 0; i < list.size(); i++) {
 	          	  writer.println(list.get(i));
 	            }

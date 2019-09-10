@@ -330,7 +330,7 @@ public class Club implements Serializable, Comparable<Club>, Comparator<Club> {
         }
         
         try {
-            PrintWriter writer = new PrintWriter("files\\ArchiveOfPartners.txt", "UTF-8");
+            PrintWriter writer = new PrintWriter("files/ArchiveOfPartners.txt", "UTF-8");
             for(int i = 0; i < list.size(); i++) {
           	  writer.println(list.get(i));
             }
@@ -361,7 +361,7 @@ public class Club implements Serializable, Comparable<Club>, Comparator<Club> {
 		  }
 		 
 		  try {
-	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPartnersOrderedByID.txt", "UTF-8");
+	            PrintWriter writer = new PrintWriter("files/ArchiveOfPartnersOrderedByID.txt", "UTF-8");
 	            for(int i = 0; i < list.size(); i++) {
 	          	  writer.println(list.get(i));
 	            }
@@ -392,7 +392,7 @@ public class Club implements Serializable, Comparable<Club>, Comparator<Club> {
 		  }
 		 
 		  try {
-	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPartnersOrderedByName.txt", "UTF-8");
+	            PrintWriter writer = new PrintWriter("files/ArchiveOfPartnersOrderedByName.txt", "UTF-8");
 	            for(int i = 0; i < list.size(); i++) {
 	          	  writer.println(list.get(i));
 	            }
@@ -423,7 +423,7 @@ public class Club implements Serializable, Comparable<Club>, Comparator<Club> {
 		  }
 		 
 		  try {
-	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPartnersOrderedByLastName.txt", "UTF-8");
+	            PrintWriter writer = new PrintWriter("files/ArchiveOfPartnersOrderedByLastName.txt", "UTF-8");
 	            for(int i = 0; i < list.size(); i++) {
 	          	  writer.println(list.get(i));
 	            }
@@ -454,7 +454,7 @@ public class Club implements Serializable, Comparable<Club>, Comparator<Club> {
 		  }
 		 
 		  try {
-	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPartnersOrderedByFavoritePet.txt", "UTF-8");
+	            PrintWriter writer = new PrintWriter("files/ArchiveOfPartnersOrderedByFavoritePet.txt", "UTF-8");
 	            for(int i = 0; i < list.size(); i++) {
 	          	  writer.println(list.get(i));
 	            }
@@ -485,7 +485,7 @@ public class Club implements Serializable, Comparable<Club>, Comparator<Club> {
 		  }
 		 
 		  try {
-	            PrintWriter writer = new PrintWriter("files\\ArchiveOfPartnersOrderedByAge.txt", "UTF-8");
+	            PrintWriter writer = new PrintWriter("files/ArchiveOfPartnersOrderedByAge.txt", "UTF-8");
 	            for(int i = 0; i < list.size(); i++) {
 	          	  writer.println(list.get(i));
 	            }

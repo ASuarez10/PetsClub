@@ -72,14 +72,14 @@ public class Main {
             	  System.out.println("Ingresa el nombre del club");
             	  String nCA = reader.nextLine();
             	  
-            	  System.out.println("Ingresa el dia de nacimiento del socio en numeros");
+            	  System.out.println("Ingresa el dia de creacion del club en numeros");
             	  int dCC = reader.nextInt();
             	  reader.nextLine();
             	  
-            	  System.out.println("Ingresa el mes de nacimiento del socio en numeros");
+            	  System.out.println("Ingresa el mes de creacion del club en numeros");
             	  int mCC = reader.nextInt();
             	  
-            	  System.out.println("Ingresa el año de nacimiento del socio en numeros");
+            	  System.out.println("Ingresa el año de creacion del club en numeros");
             	  int aCC = reader.nextInt();
             	  
             	  Calendar cC = new GregorianCalendar(aCC, mCC, dCC);
@@ -117,6 +117,14 @@ public class Main {
             	  
             	  System.out.println("Ingresa el año de nacimiento del socio en numeros");
             	  int aNS = reader.nextInt();
+            	  
+            	  try {
+            		  if(aNS > 2001) {
+            			throw new UnderAgePartnerException("El socio no puede ser menor de edad");  
+            		  }
+            	  }catch(Exception e) {
+            		  System.out.println(e.getMessage());
+            	  }
             	  
             	  Calendar c = new GregorianCalendar(aNS, mNS, dNS);
             	  
@@ -161,15 +169,13 @@ public class Main {
             	  
             	  System.out.println("Ingresa 1 si es macho o 2 si es hembra");
             	  int gender = reader.nextInt();
-            	  boolean bien = false;
             	  
-            	  while(!bien) {
-            		  
-            		  if(gender != 1 && gender != 2) {
-            			  System.out.println("Valor equivocado. Ingresa 1 si es macho o 2 si es hembra");
-            		  }else {
-            			  bien = true;
+            	  try {
+            		  if(gender < 1 || gender > 2) {
+            			throw new InvalidInputException("El valor ingresado es incorrecto");  
             		  }
+            	  }catch(Exception e) {
+            		  System.out.println(e.getMessage());
             	  }
             	  
             	  System.out.println("Ingresa el tipo de mascota");
@@ -226,15 +232,12 @@ public class Main {
              case 10:
             	  System.out.println("Ingresa generar:\n 1. Listado ordenado de clubs \n 2. Listado ordenado de socios \n 3. Listado ordenado de mascotas" );
             	  int selection = reader.nextInt();
-            	  boolean bien1 = false;
-            	  
-            	  while(!bien1) {
-            		  
-            		  if(selection != 1 && selection != 2 && selection != 3) {
-            			  System.out.println("Valor equivocado. Ingresa 1 para club, 2 para socio o 3 para mascota");
-            		  }else {
-            			  bien1 = true;
+            	  try {
+            		  if(selection < 1 || selection > 3) {
+            			throw new InvalidInputException("El valor ingresado es incorrecto");  
             		  }
+            	  }catch(Exception e) {
+            		  System.out.println(e.getMessage());
             	  }
             	  
             	  if(selection == 1) {
@@ -244,14 +247,12 @@ public class Main {
             		  		+ "3. Fecha de creacion \n"
             		  		+ "4. Tipos de mascotas");
             		  int criterio1 = reader.nextInt();
-            		  boolean crit1B = false;
-            		  while(!crit1B) {
-                		  
+            		  try {
                 		  if(criterio1 < 1 || criterio1 > 4) {
-                			  System.out.println("Valor equivocado. Ingresa 1. ID, 2. Nombre, 3. Fecha de creacion, 4. Tipos de mascotas");
-                		  }else {
-                			  crit1B = true;
+                			throw new InvalidInputException("El valor ingresado es incorrecto");  
                 		  }
+                	  }catch(Exception e) {
+                		  System.out.println(e.getMessage());
                 	  }
             		  if(criterio1 == 1) {
             			  information.listClubByID();
@@ -274,14 +275,12 @@ public class Main {
               		  		+ "4. Edad \n"
               		  		+ "5. Mascota favorita");
             		  int criterio2 = reader.nextInt();
-            		  boolean crit2B = false;
-            		  while(!crit2B) {
-                		  
+            		  try {
                 		  if(criterio2 < 1 || criterio2 > 5) {
-                			  System.out.println("Valor equivocado. Ingresa 1. ID, 2. Nombre, 3. Apellido, 4. Edad, 5. Mascota favorita");
-                		  }else {
-                			  crit2B = true;
+                			throw new InvalidInputException("El valor ingresado es incorrecto");  
                 		  }
+                	  }catch(Exception e) {
+                		  System.out.println(e.getMessage());
                 	  }
             		  if(criterio2 == 1) {
             			  System.out.println("Ingresa la ID del club del cual quieres generar la lista");
@@ -312,14 +311,12 @@ public class Main {
                 		  		+ "4. Genero \n"
                 		  		+ "5. Tipo"); 
             		  int criterio3 = reader.nextInt();
-            		  boolean crit3B = false;
-            		  while(!crit3B) {
-                		  
+            		  try {
                 		  if(criterio3 < 1 || criterio3 > 5) {
-                			  System.out.println("Valor equivocado. Ingresa 1. ID, 2. Nombre, 3. Edad, 4. Genero, 5. Tipo");
-                		  }else {
-                			  crit3B = true;
+                			throw new InvalidInputException("El valor ingresado es incorrecto");  
                 		  }
+                	  }catch(Exception e) {
+                		  System.out.println(e.getMessage());
                 	  }
             		  if(criterio3 == 1) {
             			  System.out.println("Ingresa la ID del club donde esta la mascota");
@@ -384,15 +381,13 @@ public class Main {
             	 		+ "2. Socio \n"
             	 		+ "3. Mascota");
             	 int srS = reader.nextInt();
-            	 boolean srBien = false;
-            	 while(!srBien) {
-           		  
+            	 try {
            		  if(srS < 1 || srS > 3) {
-           			  System.out.println("Valor equivocado. Ingresa 1. Club, 2. Socio, 3. Mascota");
-           		  }else {
-           			  srBien = true;
+           			throw new InvalidInputException("El valor ingresado es incorrecto");  
            		  }
-           	  	 }
+           	  }catch(Exception e) {
+           		  System.out.println(e.getMessage());
+           	  }
             	 if(srS == 1) {
             		 System.out.println("Ingrese la ID del club que va a buscar");
             		 String srCID = reader.nextLine();
