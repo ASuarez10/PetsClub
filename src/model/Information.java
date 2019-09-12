@@ -547,4 +547,19 @@ public class Information {
 		return msj;
 	}
 	
+	public String serializePartnersAndPets(String idCSe) {
+		String msj = "El club no esta registrado";
+		boolean esta = false;
+		
+		for(int i = 0; i < clubs.size() && !esta; i++) {
+			if(idCSe.equals(clubs.get(i).getId())) {
+				esta = true;
+				msj = "Se ha creado el archivo serializado";
+				clubs.get(i).serializePartnersAndPets();
+			}
+		}
+		
+		return msj;
+	}
+	
 }//final

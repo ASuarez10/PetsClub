@@ -1,10 +1,18 @@
 package model;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Comparator;
 import java.util.GregorianCalendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 public class Club implements Serializable, Comparable<Club>, Comparator<Club> {
@@ -635,5 +643,27 @@ public class Club implements Serializable, Comparable<Club>, Comparator<Club> {
 	@Override
 	public int compare(Club o1, Club o2) {
 		return o1.getId().compareToIgnoreCase(o2.getId());
+	}
+	
+	public void serializePartnersAndPets() {
+		File sFile = new File("files/SerializedArchive");
+		ObjectOutputStream oos;
+		ObjectInputStream ois;
+		
+		try {
+			oos = new ObjectOutputStream(new FileOutputStream(sFile));
+			oos.writeObject(partners);
+			oos.close();
+		}catch(IOException e){	
+		}
+		try {
+			ois = new ObjectInputStream(new FileInputStream(sFile));
+			partners = (ArrayList<Partner>)ois.readObject();
+		}catch(ClassNotFoundException ex) {
+			Logger.getLogger(Club.class.getName()).log(Level.SEVERE, null, ex);
+		}catch(IOException e) {			
+		}catch(ArrayIndexOutOfBoundsException ae) {
+			System.out.println(ae.getMessage());
+		}
 	}
 }//final

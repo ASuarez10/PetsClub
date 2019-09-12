@@ -47,17 +47,15 @@ public class Main {
           System.out.println("-----------------------------------------------------------------");
           System.out.println("7. Generar archivo plano con la informacion de los clubes");
           System.out.println("-----------------------------------------------------------------");
-          System.out.println("8. Generar archivo serializado con la informacion de los dueños");
+          System.out.println("8. Generar archivo serializado con la informacion de los dueños y mascotas");
           System.out.println("-----------------------------------------------------------------");
-          System.out.println("9. Generar archivo serializado con la informacion de las mascotas");
+          System.out.println("9. Generar un listado ordenado por criterio");
           System.out.println("-----------------------------------------------------------------");
-          System.out.println("10. Generar un listado ordenado por criterio");
+          System.out.println("10. Generar un listado ordenado de los dueños segun el numero de mascotas");
           System.out.println("-----------------------------------------------------------------");
-          System.out.println("11. Generar un listado ordenado de los dueños segun el numero de mascotas");
+          System.out.println("11. Generar un listado ordenado de los clubes según el número de dueños");
           System.out.println("-----------------------------------------------------------------");
-          System.out.println("12. Generar un listado ordenado de los clubes según el número de dueños");
-          System.out.println("-----------------------------------------------------------------");
-          System.out.println("13. Realizar la busqueda de un club, dueño o mascota");
+          System.out.println("12. Realizar la busqueda de un club, dueño o mascota");
           System.out.println("-----------------------------------------------------------------");
 
           a = Menu.nextInt();
@@ -224,12 +222,11 @@ public class Main {
             	  information.clubsList();
             	 break;
               case 8:
-            	  //TODO
+            	  System.out.println("Ingrese la ID del club para hacer el archivo serializado");
+            	  String idCSe = reader.nextLine();
+            	  information.serializePartnersAndPets(idCSe);
             	 break;
-              case 9:
-            	  //TODO
-            	 break;
-             case 10:
+             case 9:
             	  System.out.println("Ingresa generar:\n 1. Listado ordenado de clubs \n 2. Listado ordenado de socios \n 3. Listado ordenado de mascotas" );
             	  int selection = reader.nextInt();
             	  try {
@@ -366,16 +363,16 @@ public class Main {
             		  }
             	  }
             	 break;
-             case 11:
+             case 10:
             	  System.out.println("Ingresa el club del que quieres generar un listado de socios");
             	  String idClub = reader.nextLine();
             	  
             	  System.out.println(information.orderByPets(idClub));
                  break;
-             case 12:
+             case 11:
             	  information.orderByPartners();
                  break;
-             case 13:
+             case 12:
             	 System.out.println("Seleccione que quiere buscar: \n"
             	 		+ "1. Club \n"
             	 		+ "2. Socio \n"
@@ -417,7 +414,7 @@ public class Main {
                  break;
 
           }
-        }while(a != 14);
+        }while(a != 13);
 
     }
 
