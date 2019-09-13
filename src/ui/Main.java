@@ -1,7 +1,9 @@
 package ui;
 import model.*;
 
+
 import java.util.Scanner;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -10,13 +12,13 @@ public class Main {
     private Scanner reader;
     private Information information;
 
-    public Main (){
+    public Main () throws IOException{
 
       init();
       reader = new Scanner(System.in);
     }
 
-      public static void main(String[] args) {
+      public static void main(String[] args) throws IOException {
 
         Main m = new Main ();
         m. showMessageExample();
@@ -418,7 +420,7 @@ public class Main {
 
     }
 
-    public void init(){
-
+    public void init() throws IOException{
+    	information.loadCSVP("files/partners.csv", ",");
     }
 }//final

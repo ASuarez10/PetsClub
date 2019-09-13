@@ -59,6 +59,7 @@ public class Partner implements Serializable, Comparable<Partner>, Comparator<Pa
 		  this.fNacimiento = fNacimiento;
 		  this.favoritePet = favoritePet;
 		  pets = new ArrayList<Pet>();
+		  initPets();
 	  }
 
 	  /**
@@ -507,5 +508,13 @@ public class Partner implements Serializable, Comparable<Partner>, Comparator<Pa
 	@Override
 	public int compare(Partner o1, Partner o2) {
 		return o1.getId().compareToIgnoreCase(o2.getId());
+	}
+	
+	public void initPets() {
+		for(int i = 0; i < pets.size(); i++) {
+			Calendar c = new GregorianCalendar(2018, 7, 13);
+			Pet p = new Pet("12345", "Simon", c, 1, "Perro");
+			pets.add(p);
+		}
 	}
 }//final

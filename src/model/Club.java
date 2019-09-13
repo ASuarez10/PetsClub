@@ -1,7 +1,9 @@
 package model;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -518,6 +520,41 @@ public class Club implements Serializable, Comparable<Club>, Comparator<Club> {
 	}
 	
 	/**
+	 * Method to load the CSV archive
+	 * @param ruta - route
+	 * @param coma - comma
+	 */
+	public void loadCSVP(String ruta, String coma) throws IOException{
+		if(ruta != null) {
+			File f = new File(ruta);
+			FileReader fr = new FileReader(f);
+			BufferedReader br = new BufferedReader(fr);
+			String line = br.readLine();
+			int i = 0;
+			while(line != null && i  < partners.size()) {
+				if(line.charAt(0) != '#') {
+					String[] parts = line.split(coma);
+					String id = parts[0];
+					String name = parts[1];
+					String lastName = parts[3];
+					String birth = parts[4].substring(0,9);
+					String month = parts[4].substring(0,1);
+					String day = parts[4].substring(3,4);
+					String year = parts[4].substring(6,9);
+					String favoritePet = parts[5];
+					
+					Calendar c = new GregorianCalendar(Integer.parseInt(year), Integer.parseInt(month), Integer.parseInt(day));
+					Partner p = new Partner(id, name, lastName, c, favoritePet);
+					partners.add(p);
+				
+				br.readLine();
+				i++;
+			  }
+			}
+		}
+	}
+	
+	/**
 	 * Method to generate an archive with an ordered list of pets by name
 	 * @param partName - club's ID
 	 */
@@ -573,6 +610,11 @@ public class Club implements Serializable, Comparable<Club>, Comparator<Club> {
 		}
 	}
 	
+	/**
+	 * Method to search a Partner by ID
+	 * @param srPID - partner's ID
+	 * @return if Club is registered or not
+	 */
 	public String searchPartnerID(String srPID) {
 		String msj = "El club no esta registrado";
 		ArrayList<Partner> list = partners;
@@ -622,6 +664,11 @@ public class Club implements Serializable, Comparable<Club>, Comparator<Club> {
 		return msj;
 	}
 	
+	/**
+	 * Method to search a pet by name
+	 * @param srPP - partners's ID
+	 * @param srPeName - pet's name
+	 */
 	public String searchPetName(String srPP, String srPeName) {
 		String msj = "El socio no esta registrado";
 		boolean esta = false;
@@ -645,6 +692,9 @@ public class Club implements Serializable, Comparable<Club>, Comparator<Club> {
 		return o1.getId().compareToIgnoreCase(o2.getId());
 	}
 	
+	/**
+	 * Method to generate an serialized archive with pets and partners information
+	 */
 	public void serializePartnersAndPets() {
 		File sFile = new File("files/SerializedArchive");
 		ObjectOutputStream oos;
@@ -666,4 +716,6 @@ public class Club implements Serializable, Comparable<Club>, Comparator<Club> {
 			System.out.println(ae.getMessage());
 		}
 	}
+	
+	
 }//final

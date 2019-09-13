@@ -1,5 +1,8 @@
 package model;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.io.IOException;
 import java.io.PrintWriter;
 
 public class Information {
@@ -14,7 +17,8 @@ public class Information {
 	 */
 	public Information() {
 		clubs = new ArrayList<Club>();
-	}
+		initClubs();	
+		}
 
 	/**
 	 * Method to give the ArrayList clubs
@@ -562,4 +566,31 @@ public class Information {
 		return msj;
 	}
 	
+	public void loadCSVP(String ruta, String coma) throws IOException{
+		for(int i = 0; i < clubs.size(); i++) {
+			clubs.get(i).loadCSVP(ruta, coma);
+		}
+	}
+	
+	public void initClubs() {
+		Calendar g1 = new GregorianCalendar(2000, 7, 13);
+		Club c1 = new Club("123123", "COCACOLA", g1, "Perros");
+		clubs.add(c1);
+		
+		Calendar g2 = new GregorianCalendar(1993, 4, 13);
+		Club c2 = new Club("123323", "PEPSI", g2, "Perros");
+		clubs.add(c2);
+		
+		Calendar g3 = new GregorianCalendar(1899, 5, 3);
+		Club c3 = new Club("125523", "FANTA", g3, "Perros");
+		clubs.add(c3);
+		
+		Calendar g4 = new GregorianCalendar(1334, 6, 7);
+		Club c4 = new Club("127723", "SEVENUP", g4, "Perros");
+		clubs.add(c4);
+		
+		Calendar g5 = new GregorianCalendar(2012, 3, 1);
+		Club c5 = new Club("1288823", "KOLAROMAN", g5, "Perros");
+		clubs.add(c5);
+	}
 }//final
